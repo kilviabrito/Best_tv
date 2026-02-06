@@ -129,7 +129,7 @@ header nav a:hover {
     font-size: clamp(16px, 2.5vw, 18px);
     color: #c300c3;
     margin: 20px auto 30px;
-    max-width: 40ch;
+    max-width: 400ch;
     text-align: center;
     
     
@@ -293,4 +293,5 @@ footer {
         text-align: left;
     }
 }
+
 
