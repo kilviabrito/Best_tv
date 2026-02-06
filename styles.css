@@ -1,0 +1,313 @@
+/* ========================
+   RESET & VARIÁVEIS
+   ======================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #9b05f2;
+    --dark: #1a1a1a;
+    --gray: #6c757d;
+    --light: #f8f9fa;
+    --radius: 16px;
+    --shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* ========================
+   BASE GERAL
+   ======================== */
+html, body {
+    width: 100%;
+    overflow-x: hidden; /* Evita rolagem lateral indesejada */
+}
+
+body {
+    font-family: "Titan One", sans-serif;
+    line-height: 1.6;
+    color: #0c0101;
+    background: linear-gradient(135deg, #240238, black);
+    /* Adicionado padding-bottom para o footer não colar no fim da rolagem em alguns mobiles */
+    padding-bottom: 20px; 
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: 0.3s;
+}
+
+ul {
+    list-style: none;
+}
+
+/* REGRA DE OURO PARA IMAGENS */
+img {
+    max-width: 100%; /* A imagem nunca será maior que o pai */
+    height: auto;    /* Mantém a proporção */
+    display: block;
+}
+
+/* ========================
+   BOTÕES
+   ======================== */
+.btn, .btn-light {
+    background: #9c039c;
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: 0.3s;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.btn:hover, .btn-light:hover {
+    filter: brightness(0.9);
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    background: transparent;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+}
+
+.btn-outline:hover {
+    background: var(--primary);
+    color: #fff;
+}
+
+/* ========================
+   HEADER & NAV
+   ======================== */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: linear-gradient(135deg, #240238, rgb(71, 4, 148));
+    z-index: 999; /* Aumentado para garantir que fique sobre tudo */
+    padding: 15px 5%; /* Padding lateral para não colar na borda */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Permite que o menu quebre linha em telas minúsculas */
+    gap: 15px;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 600;
+    white-space: nowrap;
+    color: #9c039c;
+}
+
+header nav {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+header nav a {
+    font-weight: 600;
+    color: #fff; /* Ajustado para contraste no fundo escuro */
+    font-size: 14px;
+}
+
+header nav a:hover {
+    color: #d86bf5;
+}
+
+/* ========================
+   HERO SECTION
+   ======================== */
+.hero-wrapper {
+    padding-top: 100px; /* Compensa o header fixo */
+    background: linear-gradient(135deg, #fff9f5, #fff);
+    min-height: 80vh; /* Garante altura mínima */
+    display: flex;
+    align-items: center;
+}
+
+.hero {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 5%;
+    display: grid;
+    grid-template-columns: 1fr; /* Mobile: 1 coluna */
+    gap: 40px;
+    align-items: center;
+    text-align: center; /* Mobile: Texto centralizado */
+}
+
+.hero-content h1 {
+    font-size: clamp(32px, 5vw, 52px); /* Responsivo fluido */
+    line-height: 1.2;
+    color: #9c039c;
+    margin: 0 auto 20px; /* Centraliza no mobile */
+    max-width: 20ch;
+}
+
+.hero p {
+    font-size: clamp(16px, 2.5vw, 18px);
+    color: #c300c3;
+    margin: 0 auto 30px; /* Centraliza no mobile */
+    max-width: 500px; /* Evita linhas muito longas */
+}
+
+.hero-stats {
+    display: flex;
+    gap: 20px;
+    justify-content: center; /* Mobile: Centralizado */
+    align-items: center;
+    color: var(--gray);
+    flex-wrap: wrap;
+}
+
+.hero-stats strong {
+    font-size: 24px;
+    color: rgb(124, 9, 255);
+    display: block;
+}
+
+/* ========================
+   SEÇÕES GERAIS (Titulos)
+   ======================== */
+section {
+    padding: 60px 5%;
+    text-align: center;
+}
+
+section h2 {
+    font-size: clamp(28px, 4vw, 36px);
+    margin-bottom: 15px;
+    color: #9c039c;
+}
+
+section p.subtitle {
+    color: var(--gray);
+    margin-bottom: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ========================
+   COMPATIBILIDADE
+   ======================== */
+.menu-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    /* Grid automático mágico: cria colunas conforme cabe na tela */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.menu-grid li {
+    background: var(--primary);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 20px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ========================
+   CANAIS & FILMES (Grid System)
+   ======================== */
+/* Cria um grid container para os itens dentro dessas seções */
+.grid-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Adapta para logos pequenas */
+    gap: 20px;
+    justify-items: center;
+}
+
+.canais li, .filmes li {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: .3s;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.canais li:hover {
+    transform: translateY(-5px);
+}
+
+.canais img {
+    max-height: 80px; /* Limita altura das logos */
+    object-fit: contain;
+}
+
+/* ========================
+   CTA
+   ======================== */
+.cta {
+    background: linear-gradient(135deg, #240238, black);
+    border-top: 1px solid #333;
+}
+
+/* ========================
+   FOOTER
+   ======================== */
+footer {
+    background: var(--dark);
+    color: #fff;
+    padding: 60px 5% 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr; /* Mobile: 1 coluna */
+    gap: 40px;
+    text-align: center;
+}
+
+/* ========================
+   MEDIA QUERIES (Desktop)
+   ======================== */
+@media (min-width: 768px) {
+    /* Header: Espaçamento melhor */
+    .header-container {
+        flex-wrap: nowrap;
+    }
+
+    /* Hero: Layout lado a lado */
+    .hero {
+        grid-template-columns: 1fr 1fr;
+        text-align: left;
+    }
+
+    .hero-content h1,
+    .hero p {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .hero-stats {
+        justify-content: flex-start;
+    }
+    
+    /* Footer: 3 colunas */
+    footer {
+        grid-template-columns: repeat(3, 1fr);
+        text-align: left;
+    }
+}
